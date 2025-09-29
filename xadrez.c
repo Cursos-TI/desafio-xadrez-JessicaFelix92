@@ -56,6 +56,23 @@ int main() {
         printf("Esquerda\n");
         r++;
     } while (r <= casaRainha);
+
+        printf("\n"); //Separar movimentos
+
+    //Cavalo: mover duas casas para baixo e uma casa para a esquerda (loops aninhados)
+    int movimentoCavalo = 1;
+    printf("Movimento do Cavalo:\n");
+
+    // Loop aninhado: usando while / for
+    while (movimentoCavalo--)
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            printf("Baixo\n");
+        }
+        printf("Esquerda\n");
+        
+    }
     
 
     return 0;
