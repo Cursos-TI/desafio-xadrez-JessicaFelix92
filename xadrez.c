@@ -1,79 +1,70 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+void moverTorre(int casas) {
+    if (casas > 0) {
+        printf("Direita\n");
+        moverTorre(casas - 1); //Função recursiva Torre
+    }
+}
 
-int main() {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
+void moverBispo(int casas) {
+    if (casas > 0) {
+        printf("Cima, Direita\n");
+        moverBispo(casas - 1); //Função recursiva Bispo
+    }
+}
 
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
+void moverRainha(int casas) {
+    if (casas > 0) {
+        printf("Esquerda\n");
+        moverRainha(casas - 1); //Função recursiva Rainha
+     }
+}    
 
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
-
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
-
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
-
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
-
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
-
+int main(){
 
     // Declarando variáveis constantes 
-    int casaTorre = 5, casaBispo = 5, casaRainha = 8;
-    
-    //Torre: mover 5 casas para a direita (for)
+    int casaTorre = 5, casaBispo = 5, casaRainha = 8, casaCavalo = 1;
+
+    //Torre: mover 5 casas para a direita
     printf("Movimento da Torre:\n");
-    for (int t = 0; t < casaTorre; t++)
-    {
-        printf("Direita\n");
-    }
+    moverTorre(casaTorre);
 
-    //Bispo: mover 5 casas para a cima e direita (while)
-    int b = 1;
+    printf("\n");
+
+    //Bispo: mover 5 casas para cima e direita
     printf("Movimento do Bispo:\n");
-    while (b <= casaBispo)
-    {
+    moverBispo(casaBispo);
+    //Bispo: mover 5 casas para a cima e direita (loop aninhado)
+    printf("Movimento do Bispo com loop aninhado:\n");
+    for (int i = 0; i < casaBispo; i++) { // vertical (cima)
+        for (int j = 0; j < 1; j++) {      // horizontal (direita)
         printf("Cima, Direita\n");
-        b++;
     }
+
+}
+    printf("\n");
     
-    //Rainha: mover 8 casas para a esquerda (do-while)
-    int r = 1;
+    //Rainha: mover 8 casas para a esquerda
     printf("Movimento da Rainha:\n");
-    do
-    {
-        printf("Esquerda\n");
-        r++;
-    } while (r <= casaRainha);
+    moverRainha(casaRainha);
 
-        printf("\n"); //Separar movimentos
+    printf("\n");
 
-    //Cavalo: mover duas casas para baixo e uma casa para a esquerda (loops aninhados)
-    int movimentoCavalo = 1;
+    //Cavalo: mover duas casas para cima e uma casa para a direita (loops aninhados: avançado)
     printf("Movimento do Cavalo:\n");
-
-    // Loop aninhado: usando while / for
-    while (movimentoCavalo--)
-    {
-        for (int i = 0; i < 2; i++)
-        {
-            printf("Baixo\n");
+    for (int i = 0; i < casaCavalo; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (j < 2) {
+                printf("Cima\n");
+                continue;
+             } 
+             
+             if (j == 2) {                       
+            printf("Direita\n");
+            break;                           
         }
-        printf("Esquerda\n");
-        
     }
-    
-
+}
     return 0;
 }
